@@ -1,0 +1,33 @@
+networks:
+  default:
+    name: vllm-net
+
+services:
+  vllm-tester:
+    build:
+      context: ./vllm/
+      dockerfile: ./Dockerfile
+    environment:
+      - PLACEHOLDER=1
+      # - VLLM_LOGGING_LEVEL=DEBUG
+      # - TORCHDYNAMO_VERBOSE=1
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            count: 1
+            capabilities: [gpu, compute, utility]
+    # ports:
+    #   - 8000:8000
+    networks:
+      - default
+
+  dash-ui:
+    build:
+      context: ./ui/
+      dockerfile: ./Dockerfile
+    ports:
+        - 8000:8000
+    networks:
+      - default
