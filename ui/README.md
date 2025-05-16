@@ -1,3 +1,5 @@
+# Python Project Setup
+
 These steps are NOT required for running the project.  
 These were the commands run during project initialization in order to get the
 uv environment set up properly.
