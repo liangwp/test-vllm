@@ -21,8 +21,8 @@ class TextCheckGuardrail(Runnable):
 
 class LLMLogger(Runnable):
     def __init__(self, *args, **kwargs):
-        self.llm_raw_response = None
         super().__init__(*args, **kwargs)
+        self.llm_raw_response = None
         
     
     def invoke(self, input_, config=None, **kwargs):
